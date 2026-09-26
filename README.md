@@ -1,6 +1,6 @@
 # go-seed 🌱
 
-> A generic, idempotent, **row-asserting** seed runner for Go. Declare ordered seed steps, run them, and have each step prove it actually seeded — because exit 0 is not proof.
+> ✅ A generic, idempotent, **row-asserting** seed runner for Go. Declare ordered seed steps, run them, and have each step prove it actually seeded — because exit 0 is not proof.
 
 ## 📦 Install
 
@@ -8,7 +8,7 @@
 go get github.com/Bugs5382/go-seed
 ```
 
-## Why
+## 🤔 Why
 
 Hand-rolled seed scripts share three defects: they are not ordered in a
 reviewable way, they are not idempotent, and they treat a zero exit code as
@@ -56,16 +56,16 @@ step := seed.RowSpec{
 err := seed.New[seed.Executor](db).Add(step).Run(ctx)
 ```
 
-## Behavior
+## ⚙️ Behavior
 
-- **Ordered**: steps run in the order they are added.
-- **Idempotent**: your `Apply` must be idempotent; the assertion is what makes a
+- 🔢 **Ordered**: steps run in the order they are added.
+- 🔁 **Idempotent**: your `Apply` must be idempotent; the assertion is what makes a
   re-run safe to trust. Running twice does not duplicate or error.
-- **Row-asserting**: a clean `Apply` is never trusted. A step with no `Assert` is
+- 🔍 **Row-asserting**: a clean `Apply` is never trusted. A step with no `Assert` is
   applied but logged as unverified.
-- **Fail-fast**: the first failing step stops the run and returns a
+- 🛑 **Fail-fast**: the first failing step stops the run and returns a
   `*seed.StepError` naming the step and the phase.
-- **Logging**: standard-library `log/slog` (`seed.WithLogger` to override). No
+- 📝 **Logging**: standard-library `log/slog` (`seed.WithLogger` to override). No
   third-party logging dependency.
 
 ## 🛠 Develop
