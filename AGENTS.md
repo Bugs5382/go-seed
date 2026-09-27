@@ -42,6 +42,8 @@ The contract a consumer respects:
 
 - See `CLAUDE.md` for the branch/commit/PR rules; they are enforced by the git hooks in
   `.claude/hooks` (run `bash .claude/hooks/install.sh` once per clone).
+- Open every PR as a draft. CI skips drafts, so run the full checks locally, push once they pass,
+  and mark the PR ready when the work is finished; see CLAUDE.md "CI and Actions minutes".
 - The public surface is stable under semver as of v1.0.0. New behavior arrives as an additive
   `Option` or a new struct field, never a breaking change without a v2.
 - No third-party runtime dependencies: logging is `log/slog`, the SQL path targets only
